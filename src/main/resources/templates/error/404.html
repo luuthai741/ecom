@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>404 - OGANI</title>
+<head th:replace="./user-fragments/htmlhead">
+</head>
+<style>
+	.center-item {
+
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+</style>
+<body>
+    <div class="page-wrap d-flex flex-row align-items-center center-item">
+	    <div class="container">
+	        <div class="row justify-content-center">
+	            <div class="col-md-12 text-center">
+	            	<h1 style="font-size: 150px" class="text-success"><i class="fas fa-sad-tear"></i></h1>
+	                <h2>404</h2>
+	                <div class="mb-4 lead">Không thể tìm thấy trang với địa chỉ này !</div>
+	                <a th:href="@{/}" class="btn btn-link">Quay lại trang chủ</a>
+	                <div sec:authorize="hasRole('ROLE_ADMIN')">
+					 	<a th:href="@{/admin}" class="btn btn-link">Quay lại trang quản trị</a>
+					</div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+    <th:block th:replace="./user-fragments/footer"> </th:block>
+</body>
+ <th:block th:replace="./user-fragments/body_scripts"></th:block>
+</html>

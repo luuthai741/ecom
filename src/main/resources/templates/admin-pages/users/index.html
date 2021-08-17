@@ -1,0 +1,60 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{admin-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div style="margin-top: 52px">
+		<div class="container">
+			<p>
+				<span><a href="./index.html"> Trang chủ </a><i
+					class="fas fa-angle-right"></i></span> <span><a>Người dùng</a></span>
+			</p>
+			<div style="margin-bottom: 20px">
+				<a class="btn btn-outline-secondary" th:href="@{/admin/books/add}"><i
+					class="fas fa-plus-circle"></i> Thêm người dùng</a>
+			</div>
+			<th:block th:if="${#lists.isEmpty(users)}">
+				<h5>Chưa có người dùng nào!</h5>
+			</th:block>
+			<th:block th:unless="${#lists.isEmpty(users)}">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col"><i class="fas fa-th-list"></i></th>
+							<th scope="col">Tên người dùng</th>
+							<th scope="col">Email</th>
+							<th scope="col">Trạng tháii</th>
+							<th scope="col">Xử lí</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="table table-hover-custome"
+							th:each="user,index : ${users}">
+							<th scope="row" th:text="${index.count}"></th>
+							<td th:text="${user.username}"></td>
+							<td th:text="${user.email}"></td>
+							<td><span class="text-success" th:if="${user.enabled}">
+									<h5>
+										<i class="fas fa-check"></i>
+									</h5>
+							</span> <span class="text-danger" th:unless="${user.enabled}">
+									<h5>
+										<i class="fas fa-times"></i>
+									</h5>
+							</span></td>
+							<td><a class="btn btn-outline-info "
+								th:href="@{/admin/users/}+ ${user.id}">Xem</a> <a
+								class="btn btn-outline-danger "
+								th:href="@{/admin/users/delete/} + ${user.id}">Xóa</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</th:block>
+		</div>
+	</div>
+</th:block>
+</html>

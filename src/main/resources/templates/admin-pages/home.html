@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{admin-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+		<h3 class="container mt-5">
+    		Xin chào, <span class="text-uppercase font-weight-bold" sec:authentication="name"></span> !!	 &nbsp;
+    	</h3>
+</th:block>
+</html>

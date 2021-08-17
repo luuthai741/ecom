@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{admin-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div class="container">
+	<div style="margin-top: 52px">
+        <p>
+           <span><a th:href="@{/admin}"> Trang chủ </a><i class="fas fa-angle-right"></i></span>
+           <span><a>Thể loại</a></span>
+            </p>
+            <div style="margin-bottom: 20px">
+                <a class="btn btn-outline-secondary" th:href="@{/admin/genres/add}"><i class="fas fa-plus-circle"></i> Thêm
+                    thể loại</a>
+            </div>
+            
+            <th:block th:if="${#lists.isEmpty(genres)}">
+    			<h5>Chưa có thể loại nào được thêm vào !</h5>
+			</th:block>
+            
+             <th:block th:unless="${#lists.isEmpty(genres)}">
+	            <table class="table">
+	                <thead>
+	                    <tr>
+	                        <th scope="col"><i class="fas fa-th-list"></i></th>
+	                        <th scope="col">Tên thể loại</th>
+	                        <th scope="col">Xử lí</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr th:each="genre,index : ${genres} " class="table table-hover-custome">
+	                        <th scope="row" th:text="${index.count}"></th>
+	                        <td> [[${genre.name}]]</td>
+	                       
+	                        <td>
+	                            <a class="btn btn-outline-warning " th:href="@{/admin/genres/update/} + ${genre.id}">Sửa</a>
+	                            <a class="btn btn-outline-danger" th:href="@{/admin/genres/delete/} + ${genre.id}">Xóa</a>
+	                        </td>
+	                    </tr>
+	                </tbody>
+	            </table>
+	         </th:block>
+	         </div>
+        </div>
+</th:block>
+</html>

@@ -1,0 +1,272 @@
+.login-popup-heading>h4 {
+	color: #258b47;
+	font-size: 18px;
+	line-height: 30px;
+}
+
+.new_reg_popup, .new_login_popup {
+	border-radius: 2px;
+	min-height: 332px;
+	width: 500px;
+	margin: 0px auto;
+}
+
+.login-popup-btn {
+	background: #258b47;
+	border: none;
+	border-radius: 25px;
+	color: #fff;
+	display: block;
+	font-size: 18px;
+	height: 38px;
+	line-height: 28px;
+	margin: 20px auto 5px;
+	width: 150px;
+	-webkit-transition: all 700ms ease;
+	-moz-transition: all 700ms ease;
+	-ms-transition: all 700ms ease;
+	-o-transition: all 700ms ease;
+}
+
+a {
+	color: #258b47;
+	font-size: 18px;
+}
+
+.img_mg {
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+
+.img_size {
+	height: 32px;
+	width: 82px;
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	background-color: #EEEEEE;
+}
+
+.footer-item {
+	margin: 2px
+}
+
+.carousel-item {
+	height: 100vh;
+	min-height: 350px;
+	background: no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+body {
+	color: #000;
+	overflow-x: hidden;
+	height: 100%;
+	background-color: #fff;
+	background-repeat: no-repeat
+}
+
+.vsm-text:hover {
+	color: #FF5252
+}
+
+.book, .book-img {
+	width: 100px;
+	height: 120px;
+	border-radius: 8px
+}
+
+.book {
+	margin: 5px
+}
+
+.border-top {
+	border-top: 1px solid #EEEEEE !important;
+	margin-top: 20px;
+	padding-top: 15px
+}
+
+.card {
+	margin: 40px 0px;
+	padding: 40px 50px;
+	border-radius: 20px;
+	border: none;
+	box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.2)
+}
+
+input, textarea {
+	background-color: #F3E5F5;
+	padding: 8px 15px 8px 15px;
+	width: 100%;
+	border-radius: 5px !important;
+	box-sizing: border-box;
+	border: 1px solid #F3E5F5;
+	font-size: 15px !important;
+	color: #000 !important;
+	font-weight: 300
+}
+
+input:focus, textarea:focus {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border: 1px solid #9FA8DA;
+	outline-width: 0;
+	font-weight: 400
+}
+
+button:focus {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	outline-width: 0
+}
+
+.pay {
+	width: 80px;
+	height: 40px;
+	border-radius: 5px;
+	border: 1px solid #673AB7;
+	margin: 10px 20px 10px 0px;
+	cursor: pointer;
+	box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.2)
+}
+
+.gray {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	filter: grayscale(100%);
+	color: #E0E0E0
+}
+
+.gray .pay {
+	box-shadow: none
+}
+
+#tax {
+	border-top: 1px lightgray solid;
+	margin-top: 10px;
+	padding-top: 10px
+}
+
+.btn-blue {
+	border: none;
+	border-radius: 10px;
+	background-color: #673AB7;
+	color: #fff;
+	padding: 8px 15px;
+	margin: 20px 0px;
+	cursor: pointer
+}
+
+.btn-blue:hover {
+	background-color: #311B92;
+	color: #fff
+}
+
+#checkout {
+	float: left
+}
+
+#check-amt {
+	float: right
+}
+
+@media screen and (max-width: 768px) {
+	.book, .book-img {
+		width: 100px;
+		height: 120px;
+		border-radius: 5px
+	}
+	.card {
+		padding-left: 15px;
+		padding-right: 15px
+	}
+	.mob-text {
+		font-size: 13px
+	}
+	.pad-left {
+		padding-left: 20px
+	}
+}
+
+.table-hover-custome:hover {
+	background-color: #EEEEEE;
+	transition: 0.5s;
+}
+
+.minus, .plus {
+	color: white;
+	background-color: #673AB7;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	align-items: center;
+	justify-content: center;
+	margin: 4px;
+}
+
+.minus:hover, .plus:hover {
+	color: white;
+	background-color: #311B92;
+	transition: 0.3s;
+	text-decoration: none;
+}
+
+.text-custome {
+	align-items: center;
+	justify-content: center;
+	margin: 4px;
+}
+
+body {
+	background: #eee
+}
+
+.ratings i {
+	font-size: 16px;
+	color: red
+}
+
+.strike-text {
+	color: red;
+	text-decoration: line-through
+}
+
+.product-image {
+	width: 100%
+}
+
+.dot {
+	height: 7px;
+	width: 7px;
+	margin-left: 6px;
+	margin-right: 6px;
+	margin-top: 3px;
+	background-color: blue;
+	border-radius: 50%;
+	display: inline-block
+}
+
+.spec-1 {
+	color: #938787;
+	font-size: 15px
+}
+
+h5 {
+	font-weight: 400
+}
+
+.para {
+	font-size: 16px
+}

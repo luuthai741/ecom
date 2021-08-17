@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{user-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div class="container mt-5 mb-5">
+     	<div th:text="${message}"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center row">
+                    <div class="col-md-10">
+                        <div class="row p-2 bg-white border rounded" th:each="book: ${books}">
+                            <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image "
+                                    src="../image/nhung ngoi sao xa xoi_bia.u335.d20160803.t155556.276062.jpg"
+                                    style="width: 130px; height: 150px;"></div>
+                            <div class="col-md-6 mt-1">
+                                <h5 th:text="${book.name}"></h5>
+                                <h6 th:text="${book.author}"></h6>
+                                <h6 th:text="${book.description}"></h6>
+                            </div>
+                            <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                <div class="d-flex flex-row align-items-center">
+                                    <h4 class="mr-1">$ <span th:text="${book.price}"></span></h4>
+                                </div>
+                                <div class="d-flex flex-column mt-4">
+                                    <a class="btn btn-info btn-sm" style="color: white;" th:href="@{/books/} + ${book.id}"> Chi
+                                        tiết</a>
+                                    <button class="btn btn-outline-success btn-sm mt-2" type="button"><i
+                                            class="fas fa-plus"></i> Thêm vào giỏ hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+</th:block>
+</html>

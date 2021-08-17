@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>403 - OGANI</title>
+<head th:replace="./user-fragments/htmlhead">
+</head>
+<style>
+	.center-item {
+
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+</style>
+<body>
+    <div class="page-wrap d-flex flex-row align-items-center center-item">
+	    <div class="container">
+	        <div class="row justify-content-center">
+	            <div class="col-md-12 text-center">
+	            	<h1 style="font-size: 150px" class="text-success"><i class="fas fa-times-circle"></i></h1>
+	                <h2>403</h2>
+	                <div class="mb-4 lead">Bạn không có quyền truy cập vào địa chỉ này !</div>
+	                <a th:href="@{/}" class="btn btn-link">Quay lại trang chủ</a>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+    <th:block th:replace="./user-fragments/footer"> </th:block>
+</body>
+ <th:block th:replace="./user-fragments/body_scripts"></th:block>
+</html>

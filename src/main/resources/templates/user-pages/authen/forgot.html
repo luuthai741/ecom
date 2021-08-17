@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{user-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div class="container">
+        <div class="login-popup-wrap new_login_popup">
+            <div class="login-popup-heading text-center img_mg">
+                <img src="http://localhost:8080/book-images/logo.png" />
+            </div>
+           <form class="form-horizontal" th:action="@{/forgot}" method="post">
+                
+                <div class="form-group">
+                    <input  type="email" name="email" class="form-control" id="inputPassword4" placeholder="Mời nhập Email để xác minh">
+                     <span id="checkEmail" style="color: red"></span>
+                </div>              
+                <button type="submit" class="btn btn-default login-popup-btn" name="submit">THAY ĐỔI</button>
+            </form>
+        </div>
+    </div>
+</th:block>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{user-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div class="mt-5 pt-4">
+        <div class="container dark-grey-text mt-5">
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-6 mb-4">
+                    <img th:src="@{${book.imagePath}}"
+                        style="width: 320px; height: 400px;" class="img-fluid" alt="${book.image}" />
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-4">
+
+                    <!--Content-->
+                    <div class="p-4">
+
+                        <div class="mb-3">
+                            Thể loại:
+                            <a href="">
+                                <span>
+                                    <h4 th:text=${book.genre.name}></h4>
+                                </span>
+                            </a>
+                        </div>
+
+                        <p class="lead">
+                            $ <span th:text="${book.price}"></span>
+                        </p>
+                        <p class="lead font-weight-bold">Mô tả</p>
+
+                        <p th:utext=${book.description}></p>
+
+                        
+                            <!-- Default input -->
+                            <input id="input-qty" name="quantity" type="number" value="1"  class="form-control"
+                                style="width: 100px">
+                            <button class="btn btn-outline-success btn-md my-0 p add-to-cart-btn" >Thêm vào giỏ hàng
+                                <i class="fas fa-shopping-cart ml-1"></i>
+                            </button>
+
+                 
+
+                    </div>
+                    <!--Content-->
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <hr>
+
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-md-6 text-center">
+
+                    <h4 class="my-4 h4">Nội dung</h4>
+                    <p th:utext="${book.content}"></p>
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+        </div>
+    </div>
+    <div style="margin-bottom: 100px"></div>
+</th:block>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{user-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center row">
+                    <div class="col-md-10">
+                        <div class="row p-2 bg-white border rounded" th:each="book: ${books}">
+                            <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image "
+                                     th:src="@{${book.imagePath}}"
+                                    style="width: 130px; height: 150px;"></div>
+                            <div class="col-md-6 mt-1">
+                                <h5 th:text="${book.name}"></h5>
+                                <h6 th:text="${book.author}"></h6>
+                                <h6 th:text="${book.description}"></h6>
+                                <h6>Số lượng: <span class="text-danger" th:text=${book.quantity}></span></h6>
+                            </div>
+                            
+                            <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                <div class="d-flex flex-row align-items-center">
+                                    <h4 class="mr-1">$ <span th:text="${book.price}"></span></h4>
+                                </div>
+                       
+                                <div class="d-flex flex-column mt-4">
+                                    <a class="btn btn-info btn-sm" style="color: white;" th:href="@{/books/} + ${book.id}"> Chi
+                                        tiết</a>
+                                    
+                                    	<a th:href="@{'/cart/add?bookId=' + ${book.id} + '&quantity=1' }"  class="btn btn-outline-success btn-sm mt-2 add-to-cart-btn"><i
+                                            class="fas fa-plus"></i> Thêm vào giỏ hàng</a>
+                          
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="pagination justify-content-center">
+     <li class="page-item">
+     	<a th:if="${currentPage > 1}" class="page-link text-success" th:href="@{/books/page=1}">Trang đầu</a>
+    	<span style="color: black" th:unless="${currentPage >1}"class="page-link">Trang đầu</span>
+     </li>
+     
+    <li class="page-item">
+     	<a th:if="${currentPage > 1}" class="page-link text-success" th:href="@{'/books/page='  + ${currentPage - 1}}">Trước</a>
+    	<span style="color: black" th:unless="${currentPage >1}"class="page-link">Trước</span>
+     </li>
+    
+    <li class="page-item " th:each="i:${#numbers.sequence(1,totalPage)}"><a class="page-link text-success" th:if="${i != currentPage}" th:href="@{'/books/page=' + ${i}}">[[${i}]]</a>
+	   <span style="color: black" class="page-link" th:unless="${i != currentPage}">[[${i}]]</span>
+    </li>
+    
+ 	 <li class="page-item">
+     	<a th:if="${currentPage < totalPage}" class="page-link text-success" th:href="@{'/books/page=' + ${currentPage + 1}}">Sau</a>
+    	<span style="color: black" th:unless="${currentPage <totalPage}"class="page-link">Sau</span>
+     </li>
+     
+   <li class="page-item">
+     	<a th:if="${currentPage < totalPage}" class="page-link text-success" th:href="@{'/books/page=' + ${totalPage}}">Trang cuối</a>
+    	<span style="color: black" th:unless="${currentPage <totalPage}"class="page-link"> Trang cuối</span>
+     </li>
+  </ul> 
+    </div>	
+</th:block>
+</html>

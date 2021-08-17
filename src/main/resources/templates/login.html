@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:with="http://www.thymeleaf.org/extras/with"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{user-layout}"
+      with:title="'Hello, template'">
+	<th:block layout:fragment="content">
+    	<div class="container">
+        <div class="login-popup-wrap new_login_popup">
+            <div class="login-popup-heading text-center img_mg">
+                <img src="http://localhost:8080/book-images/logo.png" alt="">
+            </div>
+            <!--<form accept-charset="utf-8" method="post" action="">-->
+            <form th:action="@{/login}" method="POST" >
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" placeholder="Xin mời nhập tên tài khoản"
+                        name="username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Xin mời nhập mật khẩu"
+                        name="password">
+                </div>
+                <button type="submit" class="btn btn-default login-popup-btn">Đăng nhập</button>
+            </form>
+            <div class="form-group text-center">
+                Bạn đã quên mật khẩu? <a class="pwd-forget" th:href="@{/forgot-password}" id="open_forgotPassword">Tìm lại
+                    mật khẩu</a>
+            </div>
+            <div class="text-center">Bạn chưa có có tài khoản?<a
+                    th:href="@{/register}">Nhấn vào đây</a></div>
+        </div>
+    </div>
+	</th:block>
+</html>

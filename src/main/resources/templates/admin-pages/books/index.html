@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{admin-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div style="margin-top: 52px">
+		<div class="container">
+			<p>
+				<span><a href="./index.html"> Trang chủ </a><i
+					class="fas fa-angle-right"></i></span> <span><a>Sách</a></span>
+			</p>
+			<div style="margin-bottom: 20px">
+				<a class="btn btn-outline-secondary" th:href="@{/admin/books/add}"><i
+					class="fas fa-plus-circle"></i> Thêm sách</a>
+			</div>
+			<th:block th:if="${#lists.isEmpty(books)}">
+				<h5>Chưa có cuốn sách nào được thêm vào !</h5>
+			</th:block>
+			<th:block th:unless="${#lists.isEmpty(books)}">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col"><i class="fas fa-th-list"></i></th>
+	                        <th scope="col">Tên sách</th>
+	                        <th scope="col">Hình ảnh</th>	                 
+	                        <th scope="col">Tên thể loại</th>
+	                         <th scope="col">Số lượng</th>
+	                        <th scope="col">Giá sách</th>
+	                        <th scope="col">Kích hoạt</th>
+	                        <th scope="col">Xử lí</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="table table-hover-custome"
+							th:each="book,index : ${books}">
+							<th scope="row" th:text="${index.count}"></th>
+							<td th:text="${book.name}"></td>
+							<td><img th:src="@{${book.imagePath}}"
+								style="width: 50px; height: 50px" /></td>		
+							<td th:text="${book.genre.name}"></td>
+							<td th:text="${book.quantity}"></td>
+							<td th:text="${book.price}"></td>
+							<td><span class="text-success" th:if="${book.enabled}">
+									<h5>
+										<i class="fas fa-check"></i>
+									</h5>
+							</span> <span class="text-danger" th:unless="${book.enabled}">
+									<h5>
+										<i class="fas fa-times"></i>
+									</h5>
+							</span></td>
+							<td>> <a
+								class="btn btn-outline-info "
+								th:href="@{/admin/books/update/} + ${book.id}">Sửa</a> <a
+								class="btn btn-outline-danger"
+								th:href="@{/admin/books/delete/} + ${book.id}">Xóa</a></td>
+						</tr>
+					</tbody>
+				</table>
+				<ul class="pagination justify-content-center">
+     <li class="page-item">
+     	<a th:if="${currentPage > 1}" class="page-link text-success" th:href="@{/admin/books/page=1}">Trang đầu</a>
+    	<span style="color: black" th:unless="${currentPage >1}"class="page-link">Trang đầu</span>
+     </li>
+     
+    <li class="page-item">
+     	<a th:if="${currentPage > 1}" class="page-link text-success" th:href="@{'/admin/books/page='  + ${currentPage - 1}}">Trước</a>
+    	<span style="color: black" th:unless="${currentPage >1}"class="page-link">Trước</span>
+     </li>
+    
+    <li class="page-item " th:each="i:${#numbers.sequence(1,totalPage)}"><a class="page-link text-success" th:if="${i != currentPage}" th:href="@{'/admin/books/page=' + ${i}}">[[${i}]]</a>
+	   <span style="color: black" class="page-link" th:unless="${i != currentPage}">[[${i}]]</span>
+    </li>
+    
+ 	 <li class="page-item">
+     	<a th:if="${currentPage < totalPage}" class="page-link text-success" th:href="@{'/admin/books/page=' + ${currentPage + 1}}">Sau</a>
+    	<span style="color: black" th:unless="${currentPage <totalPage}"class="page-link">Sau</span>
+     </li>
+     
+   <li class="page-item">
+     	<a th:if="${currentPage < totalPage}" class="page-link text-success" th:href="@{'/admin/books/page=' + ${totalPage}}">Trang cuối</a>
+    	<span style="color: black" th:unless="${currentPage <totalPage}"class="page-link"> Trang cuối</span>
+     </li>
+  </ul> 
+			</th:block>
+		</div>
+	</div>
+</th:block>
+</html>

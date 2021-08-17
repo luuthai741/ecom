@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{user-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div class="container">
+     <form role="form" th:action="@{'/info/' + ${info.id == 0 ? 'add' : 'update?id=' + info.id}}" th:object="${info}" method="POST" >
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Họ và tên đệm </label>
+                        	<input th:field="*{firstName}" type="text" class="form-control" placeholder="Nhập họ và tên đệm" th:value="${info.firstName}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Tên</label>
+                        	<input th:field="*{lastName}" type="text" class="form-control" placeholder="Nhập tên " th:value="${info.lastName}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Số điện thoại </label>
+                        	<input th:field="*{phoneNumber}" type="text" class="form-control" placeholder="Nhập số điện thoại" th:value="${info.phoneNumber}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Địa chỉ </label>
+                        	<input th:field="*{address}" type="text" class="form-control" placeholder="Nhập địa chỉ" th:value="${info.address}">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success">Xử lí</button>
+                </div>
+            </form>
+            </div>
+</th:block>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{admin-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+		<div class="container " style="margin-top:52px">
+            <p>
+                <span><a th:href="@{/admin}"> Trang chủ </a><i class="fas fa-angle-right"></i></span>
+                <span><a th:href="@{/admin/books}"> Sách </a><i class="fas fa-angle-right"></i></span>
+                <span><a> Tùy chỉnh sách </a></span>
+            </p>
+            <form id="formProduct"
+			th:action="@{'/admin/books/' + ${book.id == null ? 'add' : 'update?id=' + book.id}}"
+			th:object="${book}" method="POST" enctype="multipart/form-data">
+			  <div class="row">
+			<div class="col-md-4 ">
+				<input type="hidden" th:value="${book.id}">
+				<div class="form-group">
+					<label>Tên sách</label> <input th:field="*{name}" type="text"
+						class="form-control" placeholder="Nhập tên sách"
+						th:value="${book.name}"> <small
+						th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+						class="text-danger"></small>
+				</div>
+				<div class="form-group">
+					<label>Tên tác giả</label> <input th:field="*{author}" type="text"
+						class="form-control" placeholder="Nhập tên tác giả"
+						th:value="${book.author}"> <small
+						th:if="${#fields.hasErrors('author')}" th:errors="*{author}"
+						class="text-danger"></small>
+				</div>
+				<div class="form-group">
+					<label>Giá sách</label> <input th:field="*{price}" type="text"
+						class="form-control" placeholder="Nhập giá sách"
+						th:value="${book.price}"> <small
+						th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
+						class="text-danger"></small>
+				</div>
+				<div class="form-group">
+					<label>Số lượng hàng</label> <input th:field="*{quantity}" type="text"
+						class="form-control" placeholder="Nhập giá sách"
+						th:value="${book.price}"> <small
+						th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"
+						class="text-danger"></small>
+				</div>
+				<div class="form-group">
+					<label>Danh mục</label> <select th:field="*{genre}"
+						class="custom-select">
+						<option th:each="genre : ${genres}" th:value="${genre.id}"
+							th:text="${genre.name}"></option>
+					</select>
+				</div>
+				<div class="form-group">		
+						<label>Mô tả</label>	
+						<textarea rows="4" cols="4" th:field="*{description}" type="text"
+						class="form-control" placeholder="Nhập giá sách"
+						th:value="${book.description}">
+						
+						</textarea>
+				</div>	
+				<div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" name="enabled" th:checked="*{enabled}" />
+                                <label class="form-check-label" for="exampleCheck1">Kích hoạt</label>
+                            </div>
+                 </div>
+                 <div class="form-group">
+		               <label>Tải ảnh</label>
+		               <input type="file" name="fileImage" id="fileImage" accept="image/png, image/jpeg, image/jpg" />
+		             </div>
+		             <div>
+		             	<img style="width: 100px;height: 100px" id="thumbnail" alt="Logo preview" src="">
+		             </div>
+					</div>
+					<div class="col-md-8">
+           	 <div class="form-group">
+			    <label>Nội dung</label>
+			    <textarea th:field="*{content}" id="editor" rows="20" class="form-control"></textarea>
+			 </div>
+           </div>
+         </div>
+		 
+         <div class="row text-center d-flex justify-content-center">
+         <button class="btn btn-success " type="submit">Xử lý</button>
+         </div>
+         </form>
+        </div>
+</th:block>
+<script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
+<script type="text/javascript">
+        	$(document).ready(function(){
+        		ClassicEditor.create( document.querySelector( '#editor' ) ).catch( error => {
+    		        console.error( error );
+    		    });
+        		$('#fileImage').change(function(){
+        			showImageThumbnail(this);
+        		});
+        	});
+        	
+        	function showImageThumbnail(fileInput){
+            file = fileInput.files[0];
+            reader = new FileReader();
+            reader.onload = function(e){
+              $('#thumbnail').attr('src',e.target.result);
+            };
+            reader.readAsDataURL(file);
+          }
+
+        </script>
+</html>

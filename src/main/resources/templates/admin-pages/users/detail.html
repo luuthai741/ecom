@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{admin-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div class="container " style="margin-top: 52px">
+		<p>
+			<span><a th:href="@{/admin/}"> Trang chủ </a><i
+				class="fas fa-angle-right"></i></span> <span><a
+				th:href="@{/admin/users/}"> Người dùng </a><i
+				class="fas fa-angle-right"></i></span> <span><a> Thông tin chi tiết
+					 </a></span>
+		</p>
+		<div class="row" style="margin-bottom: 20px">
+			<div class="col-md-8">
+				<p>
+					ID: <span th:text="${user.id}"></span>
+				</p>
+				<P>
+					Tên người dùng: <span th:text="${user.username}"></span>
+				</P>
+				<p>
+					Họ và tên: <span
+						th:text="${(user.info.firstName) + (user.info.lastName)}"></span>
+				</p>
+				<P>
+					Email: <span th:text="${user.email}"></span>
+				</P>
+				<P>
+					Số điện thoại: <span th:text="${user.info.phoneNumber}"></span>
+				</P>
+				<P>
+					Địa chỉ: <span th:text="${user.info.address}"></span>
+				</P>
+				<p>
+					Trạng thái: <span th:if="${user.enabled}"> Kích hoạt </span> <span
+						th:unless="${user.enabled}"> Ngưng </span>
+				</p>
+
+			</div>
+		</div>
+	</div>
+</th:block>
+</html>
