@@ -14,7 +14,7 @@
                     <div class="col-md-10">
                         <div class="row p-2 bg-white border rounded" th:each="book: ${books}">
                             <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image "
-                                    src="../image/nhung ngoi sao xa xoi_bia.u335.d20160803.t155556.276062.jpg"
+                                     th:src="@{${book.imagePath}}"
                                     style="width: 130px; height: 150px;"></div>
                             <div class="col-md-6 mt-1">
                                 <h5 th:text="${book.name}"></h5>

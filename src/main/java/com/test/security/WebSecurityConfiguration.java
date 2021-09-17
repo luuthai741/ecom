@@ -43,7 +43,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		String[] resources = new String[] { "/**", "/static/**", "/image/**", "/api/**", "/resources/**","/book-images/**"
+		String[] resources = new String[] { "/**", "/static/**", "/image/**", "/api/**", "/resources/**","/book-images/**","/cart/**"
 		};
 
 		http.authorizeRequests().antMatchers(resources).permitAll().anyRequest().authenticated().and().formLogin()

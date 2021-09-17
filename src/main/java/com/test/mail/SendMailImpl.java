@@ -68,14 +68,14 @@ public class SendMailImpl implements SendMail {
 	}
 
 	@Override
-	public void checkMail(User user, String to, String token) throws UnsupportedEncodingException, MessagingException {
+	public void enabledOrder(String email,String to, String token) throws UnsupportedEncodingException, MessagingException {
 		String subject = "Hãy xác nhận thanh toán đơn hàng";
 		String senderName = "OGANI - Book Shop";
 
-		String verifyURL = to + "/cart/check-out?token=" + token;
+		String verifyURL = to + "/cart/check-out?cofirmToken=" + token ;
 
 		StringBuilder builder = new StringBuilder();
-		builder.append("<p>" + "Xin chào, " + user.getUsername() + " </p>");
+		builder.append("<p>" + "Xin chào ! " + " </p>");
 		builder.append("<p>" + " Đây là tin nhắn xác nhận để thanh toán" + "</p>");
 		builder.append("<p>" + " Vui lòng nhấn vào đường dẫn để thanh toán" + "</p>");
 		builder.append("<h3><a href=\"" + verifyURL + "\">Xác nhận</a><h3>");
@@ -84,7 +84,7 @@ public class SendMailImpl implements SendMail {
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
 		helper.setFrom("luuthai555@gmail.com", senderName);
-		helper.setTo(user.getEmail());
+		helper.setTo(email);
 		helper.setSubject(subject);
 		helper.setText(builder.toString(), true);
 

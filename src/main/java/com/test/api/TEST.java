@@ -6,21 +6,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.test.dao.BookDao;
 import com.test.entities.security.User;
+import com.test.repo.BookRepository;
 import com.test.repo.InfoRepository;
+import com.test.service.BookService;
 import com.test.service.UserService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class TEST {
 	@Autowired
 	private InfoRepository refo;
 	@Autowired
-	private UserService userService;
+	private BookService bookService;
 
 	@GetMapping("/test")
 	public ResponseEntity<?> response(@RequestParam int id) {
-		User user = userService.findById(id);
-		return ResponseEntity.ok(refo.findByUser(user));
+		return ResponseEntity.ok(bookService.newBooks().getContent());
 	}
 }

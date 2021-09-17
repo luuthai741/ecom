@@ -17,6 +17,6 @@ public class GenreController extends BaseController{
 	@GetMapping("/genre-{id}")
 	public String getBooksByGenre(Model model, @PathVariable int id) {
 		model.addAttribute("books", genreService.findById(id).getBooks());
-		return "user-pages/books/index";
+		return "user-pages/search-result";
 	}
 }

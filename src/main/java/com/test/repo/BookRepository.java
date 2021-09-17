@@ -20,4 +20,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
 	@Query("SELECT b FROM Book b where b.name LIKE %?1%")
 	List<Book> searchBook(String name);
+//	
+//	@Query("SELECT b FROM Book b ORDER BY b.createdAt LIMIT 6")
+//	List<Book> newBooks();
 }

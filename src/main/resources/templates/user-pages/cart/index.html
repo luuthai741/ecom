@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{user-layout}" with:title="'Hello, template'">
+
+<th:block layout:fragment="content">
+	<div class="container px-4 py-5 mx-auto">
+		<h5>
+			<a th:href="@{/cart/clear}"><i class="fas fa-times"></i>XÓA GIỎ
+				HÀNG</a>
+		</h5>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Tên sách</th>
+					<th scope="col">Hình minh họa</th>
+					<th scope="col">Số lượng</th>
+					<th scope="col">Giá</th>
+					<th scope="col">Xóa</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table-hover-custome" th:each="item :${listItems}">
+					<td scope="row">
+						<div class="row d-flex">
+
+							<div class="my-auto flex-column d-flex pad-left">
+								<h5 class="mob-text" th:text=${item.bookName}></h5>
+
+							</div>
+						</div>
+					</td>
+					<td scope="row">
+						<div class="row d-flex">
+							<div class="book">
+								<img th:src="@{'/book-images/' + ${item.image}}"
+									style="width: 60px; height: 60px">
+							</div>
+
+						</div>
+					</td>
+					<td>
+
+						<div class="row text-center">
+							<span><a
+								th:href="@{'/cart/add?bookId='+${item.bookId} + '&quantity=-1'}">
+									<</a></span> </span> <span th:text=${item.quantity}> </span> <span><a
+								th:href="@{'/cart/add?bookId='+${item.bookId} + '&quantity=1'}">
+									></a></span>
+						</div>
+					</td>
+					<td style="font-size: 24px" class="align-self-center"
+						th:text="${(item.price*item.quantity)}"></td>
+					<td class="align-self-center"><a
+						th:href="@{/cart/delete?bookId=} + ${item.bookId}">
+							<h4>
+								<i class="fas fa-trash"></i>
+							</h4>
+					</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+		<div class="row">
+			<form role="form" th:action="@{/cart/check-out}" method="POST">
+				<button type="submit" class="btn btn-secondary">Thanh toán</button>
+		</div>
+	</div>
+</th:block>
+</html>

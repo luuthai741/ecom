@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{admin-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div style="margin-top: 52px">
+		<div class="container">
+			<p>
+				<span><a href="./index.html"> Trang chủ </a><i
+					class="fas fa-angle-right"></i></span> <span><a>Đơn hàng</a></span>
+			</p>
+			
+			<th:block th:unless="${#lists.isEmpty(items)}">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col"><i class="fas fa-th-list"></i></th>
+							<th scope="col">Tên sách</th>
+							<th scope="col">Đơn giá</th>
+							<th scope="col">Số lượng</th>
+							<th scope="col">Tổng giá</th>							
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="table table-hover-custome"
+							th:each="item,index : ${items}">
+							<th scope="row" th:text="${index.count}"></th>
+							<td th:text="${item.bookName}"></td>
+							<td th:text="${item.price}"></td>
+							<td th:text="${item.quantity}"></td>
+							<td th:text="${item.total}"></td>							
+						</tr>
+					</tbody>
+				</table>
+			</th:block>
+		</div>
+	</div>
+</th:block>
+</html>

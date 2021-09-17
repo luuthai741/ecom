@@ -205,23 +205,6 @@ button:focus {
 	transition: 0.5s;
 }
 
-.minus, .plus {
-	color: white;
-	background-color: #673AB7;
-	border-radius: 50%;
-	width: 30px;
-	height: 30px;
-	align-items: center;
-	justify-content: center;
-	margin: 4px;
-}
-
-.minus:hover, .plus:hover {
-	color: white;
-	background-color: #311B92;
-	transition: 0.3s;
-	text-decoration: none;
-}
 
 .text-custome {
 	align-items: center;

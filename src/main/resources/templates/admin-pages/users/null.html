@@ -15,32 +15,7 @@
 					 </a></span>
 		</p>
 		<div class="row" style="margin-bottom: 20px">
-			<div class="col-md-8">
-				<p>
-					ID: <span th:text="${user.id}"></span>
-				</p>
-				<P>
-					Tên người dùng: <span th:text="${user.username}"></span>
-				</P>
-				<p>
-					Họ và tên: <span
-						th:text="${(info.firstName) + (info.lastName)}"></span>
-				</p>
-				<P>
-					Email: <span th:text="${user.email}"></span>
-				</P>
-				<P>
-					Số điện thoại: <span th:text="${info.phoneNumber}"></span>
-				</P>
-				<P>
-					Địa chỉ: <span th:text="${info.address}"></span>
-				</P>
-				<p>
-					Trạng thái: <span th:if="${user.enabled}"> Kích hoạt </span> <span
-						th:unless="${user.enabled}"> Ngưng </span>
-				</p>
-
-			</div>
+			<h5>Người dùng chưa cập nhật thông tin!</h5>
 		</div>
 	</div>
 </th:block>

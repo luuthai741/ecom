@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{admin-layout}" with:title="'Hello, template'">
+<th:block layout:fragment="content">
+	<div style="margin-top: 52px">
+		<div class="container">
+			<p>
+				<span><a href="./index.html"> Trang chủ </a><i
+					class="fas fa-angle-right"></i></span> <span><a>Đơn hàng</a></span>
+			</p>
+			
+			<th:block th:if="${#lists.isEmpty(listCart)}">
+				<h5>Chưa có đơn hàng nào được đặt!</h5>
+			</th:block>
+			<th:block th:unless="${#lists.isEmpty(listCart)}">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col"><i class="fas fa-th-list"></i></th>
+							<th scope="col">Tên người đặt</th>
+							<th scope="col">Email</th>
+							<th scope="col">SĐT</th>
+							<th scope="col">Địa chỉ</th>
+							<th scope="col">Số tiền</th>
+							<th scope="col">Trạng thái</th>
+							<th scope="col">Xử lý</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="table table-hover-custome"
+							th:each="cart : ${listCart}">
+							<th scope="row" th:text="${cart.id}"></th>
+							<td th:text="${cart.userName}"></td>
+							<td th:text="${cart.email}"></td>
+							<td th:text="${cart.phone}"></td>
+							<td th:text="${cart.address}"></td>
+							<td th:text="${cart.total}"></td>
+							<td><span class="text-success" th:if="${cart.enabled}">
+									<h5>
+										<i class="fas fa-check"></i>
+									</h5>
+							</span> <span class="text-danger" th:unless="${cart.enabled}">
+									<h5>
+										<i class="fas fa-times"></i>
+									</h5>
+							</span></td>
+							<td><a class="btn btn-outline-info "
+								th:href="@{/admin/cart/}+ ${cart.id}">Xem</a> <a
+								class="btn btn-outline-danger "
+								th:href="@{/admin/cart/delete/} + ${cart.id}">Xóa</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</th:block>
+		</div>
+	</div>
+</th:block>
+</html>

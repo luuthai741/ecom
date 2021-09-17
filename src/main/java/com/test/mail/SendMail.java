@@ -11,5 +11,5 @@ import com.test.entities.security.User;
 public interface SendMail {
 	void verify(User user ,String to) throws UnsupportedEncodingException, MessagingException;
 	void resetPassword(User user,String to) throws UnsupportedEncodingException, MessagingException;
-	void checkMail(User user, String to, String token) throws UnsupportedEncodingException, MessagingException;
+	void enabledOrder(String email,String to, String token) throws UnsupportedEncodingException, MessagingException;
 }
